@@ -153,10 +153,19 @@ public class LoginActivity extends AppCompatActivity {
      */
     public static Account getValidSession(Context context, DBHelper db) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-        int accountId = prefs.getInt(KEY_ACCOUNT_ID, -1);
-        String username = prefs.getString(KEY_USERNAME, null);
-        String role = prefs.getString(KEY_ROLE, null);
-        boolean remember = prefs.getBoolean(KEY_REMEMBER, false);
+        int accountId;
+        String username;
+        String role;
+        boolean remember;
+        try {
+            accountId = prefs.getInt(KEY_ACCOUNT_ID, -1);
+            username = prefs.getString(KEY_USERNAME, null);
+            role = prefs.getString(KEY_ROLE, null);
+            remember = prefs.getBoolean(KEY_REMEMBER, false);
+        } catch (ClassCastException e) {
+            clearSession(context);
+            return null;
+        }
 
         if (accountId <= 0 || username == null || role == null || (!remember && !sessionStartedInProcess)) {
             clearSession(context);

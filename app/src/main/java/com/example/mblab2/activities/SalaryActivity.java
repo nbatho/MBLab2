@@ -1,8 +1,6 @@
 package com.example.mblab2.activities;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -168,17 +166,14 @@ public class SalaryActivity extends AppCompatActivity {
 
     /** ADMIN vào chế độ quản lý; EMPLOYEE cần hồ sơ khớp accountId. */
     private boolean loadSession() {
-        SharedPreferences prefs = getSharedPreferences(LoginActivity.PREFS, MODE_PRIVATE);
-        int id = prefs.getInt(LoginActivity.KEY_ACCOUNT_ID, -1);
-        Account current = null;
+        Account current = LoginActivity.getValidSession(this, dbHelper);
         Employee profile = null;
         boolean valid = false;
         try {
-            current = id > 0 ? dbHelper.getAccountById(id) : null;
             if (current != null && Account.ROLE_ADMIN.equals(current.getRole())) {
                 valid = true;
             } else if (current != null && Account.ROLE_EMPLOYEE.equals(current.getRole())) {
-                profile = dbHelper.getEmployeeByAccountId(id);
+                profile = dbHelper.getEmployeeByAccountId(current.getId());
                 valid = profile != null;
             }
         } catch (SQLException e) {
@@ -189,7 +184,7 @@ public class SalaryActivity extends AppCompatActivity {
             return false;
         }
 
-        accountId = id;
+        accountId = current.getId();
         account = current;
         ownProfile = profile;
         boolean admin = isAdmin();
@@ -225,12 +220,8 @@ public class SalaryActivity extends AppCompatActivity {
         accountId = -1;
         account = null;
         ownProfile = null;
-        getSharedPreferences(LoginActivity.PREFS, MODE_PRIVATE).edit().clear().apply();
         Toast.makeText(this, R.string.salary_session_invalid, Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+        LoginActivity.logout(this);
     }
 
     // endregion
@@ -598,6 +589,9 @@ public class SalaryActivity extends AppCompatActivity {
     // endregion
 
     private void shiftMonth(int delta) {
+        if (!loadSession()) {
+            return;
+        }
         int index = selectedYear * 12 + (selectedMonth - 1) + delta;
         int year = index / 12;
         if (year < 1) {
@@ -612,6 +606,9 @@ public class SalaryActivity extends AppCompatActivity {
 
     private void pickMonth() {
         new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
+            if (!loadSession()) {
+                return;
+            }
             selectedYear = year;
             selectedMonth = month + 1;
             if (account != null) {

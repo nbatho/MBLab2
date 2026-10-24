@@ -1,8 +1,6 @@
 package com.example.mblab2.activities;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -132,13 +130,11 @@ public class AttendanceActivity extends AppCompatActivity {
 
     /** Chỉ EMPLOYEE có hồ sơ khớp accountId được dùng màn hình này. */
     private boolean loadSession() {
-        SharedPreferences prefs = getSharedPreferences(LoginActivity.PREFS, MODE_PRIVATE);
-        int id = prefs.getInt(LoginActivity.KEY_ACCOUNT_ID, -1);
+        Account account = LoginActivity.getValidSession(this, dbHelper);
         Employee profile = null;
         try {
-            Account account = id > 0 ? dbHelper.getAccountById(id) : null;
             if (account != null && Account.ROLE_EMPLOYEE.equals(account.getRole())) {
-                profile = dbHelper.getEmployeeByAccountId(id);
+                profile = dbHelper.getEmployeeByAccountId(account.getId());
             }
         } catch (SQLException e) {
             showError(e);
@@ -147,7 +143,7 @@ public class AttendanceActivity extends AppCompatActivity {
             redirectToLogin();
             return false;
         }
-        accountId = id;
+        accountId = account.getId();
         employee = profile;
         tvEmployee.setText(getString(R.string.attendance_employee_info,
                 profile.getCode(), profile.getFullname()));
@@ -157,12 +153,8 @@ public class AttendanceActivity extends AppCompatActivity {
     private void redirectToLogin() {
         accountId = -1;
         employee = null;
-        getSharedPreferences(LoginActivity.PREFS, MODE_PRIVATE).edit().clear().apply();
         Toast.makeText(this, R.string.attendance_session_invalid, Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+        LoginActivity.logout(this);
     }
 
     private void refreshAll() {
@@ -321,6 +313,9 @@ public class AttendanceActivity extends AppCompatActivity {
     }
 
     private void shiftMonth(int delta) {
+        if (!loadSession()) {
+            return;
+        }
         int index = selectedYear * 12 + (selectedMonth - 1) + delta;
         int year = index / 12;
         if (year < 1) {
@@ -335,6 +330,9 @@ public class AttendanceActivity extends AppCompatActivity {
 
     private void pickMonth() {
         new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
+            if (!loadSession()) {
+                return;
+            }
             selectedYear = year;
             selectedMonth = month + 1;
             if (employee != null) {
