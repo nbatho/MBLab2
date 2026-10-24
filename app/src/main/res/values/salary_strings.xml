@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="salary_title_admin">Quản lý lương</string>
+    <string name="salary_title_employee">Lương của tôi</string>
+    <string name="salary_employee_info">%1$s – %2$s</string>
+
+    <string name="salary_month_label">Tháng %1$d/%2$d</string>
+    <string name="salary_prev_month">‹ Trước</string>
+    <string name="salary_next_month">Sau ›</string>
+
+    <string name="salary_hours_value">%1$.2f giờ</string>
+    <string name="salary_money_value">%1$s đ</string>
+    <string name="salary_rate_value">%1$s đ/giờ</string>
+
+    <string name="salary_status_draft">Nháp</string>
+    <string name="salary_status_paid">Đã chi trả</string>
+
+    <string name="salary_label_total_hours">Tổng giờ làm: %1$s</string>
+    <string name="salary_label_regular_hours">Giờ thường: %1$s</string>
+    <string name="salary_label_overtime_hours">Giờ tăng ca: %1$s</string>
+    <string name="salary_label_hourly_rate">Đơn giá hiện tại: %1$s</string>
+    <string name="salary_label_total_salary">Tổng lương: %1$s</string>
+    <string name="salary_label_status">Trạng thái: %1$s</string>
+    <string name="salary_hours_line">Tổng %1$s · Tăng ca %2$s</string>
+
+    <!-- Employee -->
+    <string name="salary_detail_header">Bảng lương tháng</string>
+    <string name="salary_no_record">Chưa có bảng lương cho tháng này.</string>
+    <string name="salary_current_header">Tổng hợp chấm công hiện tại</string>
+    <string name="salary_current_shifts">Số ca hoàn tất: %1$d</string>
+    <string name="salary_current_unavailable">Không tải được dữ liệu chấm công.</string>
+
+    <!-- Đồng bộ giữa bản lương và chấm công hiện tại -->
+    <string name="salary_warning_open_shifts">Tháng còn %1$d ca chưa check-out; cần bổ sung chấm công trước khi tính hoặc chốt lương.</string>
+    <string name="salary_warning_draft_outdated">Bảng lương nháp chưa khớp chấm công/đơn giá hiện tại, cần được tính lại.</string>
+    <string name="salary_warning_paid_changed">Lương đã chốt và giữ nguyên. Tổng hợp công hiện tại khác: %1$s, tăng ca %2$s.</string>
+    <string name="salary_warning_unknown">Không kiểm tra được chấm công hiện tại của bảng lương này.</string>
+
+    <!-- Admin -->
+    <string name="salary_admin_calculate_header">Tính lương nháp</string>
+    <string name="salary_admin_employee_hint">Nhân viên</string>
+    <string name="salary_admin_no_employees">Chưa có nhân viên để tính lương.</string>
+    <string name="salary_btn_calculate">Tính / tính lại lương</string>
+    <string name="salary_admin_list_header">Bảng lương trong tháng</string>
+    <string name="salary_admin_list_empty">Chưa có bảng lương nào trong tháng này.</string>
+    <string name="salary_admin_unknown_employee">Nhân viên #%1$d</string>
+    <string name="salary_select_employee">Vui lòng chọn nhân viên</string>
+    <string name="salary_calculate_created">Đã tạo lương nháp: %1$s</string>
+    <string name="salary_calculate_updated">Đã tính lại lương nháp: %1$s</string>
+    <string name="salary_calculate_failed">Không lưu được bảng lương. Vui lòng thử lại.</string>
+    <string name="salary_paid_locked">Bảng lương đã chốt, không thể tính lại hoặc xóa.</string>
+    <string name="salary_open_shifts_blocked">Tháng còn %1$d ca chưa check-out, chưa thể tính lương.</string>
+
+    <string name="salary_dialog_title">%1$s – tháng %2$d/%3$d</string>
+    <string name="salary_action_mark_paid">Chốt đã chi trả</string>
+    <string name="salary_action_delete_draft">Xóa nháp</string>
+    <string name="salary_action_view_worklogs">Xem chấm công</string>
+    <string name="salary_action_close">Đóng</string>
+    <string name="salary_action_cancel">Hủy</string>
+    <string name="salary_action_confirm">Xác nhận</string>
+
+    <string name="salary_confirm_paid_title">Chốt bảng lương?</string>
+    <string name="salary_confirm_paid_message">Sau khi chốt, bảng lương %1$s không thể sửa, xóa hoặc tính lại.</string>
+    <string name="salary_confirm_delete_title">Xóa bảng lương nháp?</string>
+    <string name="salary_confirm_delete_message">Xóa bảng lương nháp %1$s của tháng này.</string>
+    <string name="salary_mark_paid_blocked">Bảng lương nháp chưa khớp chấm công hiện tại hoặc còn ca mở; hãy tính lại trước khi chốt.</string>
+    <string name="salary_mark_paid_success">Đã chốt bảng lương</string>
+    <string name="salary_mark_paid_failed">Không chốt được bảng lương</string>
+    <string name="salary_delete_success">Đã xóa bảng lương nháp</string>
+    <string name="salary_delete_failed">Không xóa được bảng lương nháp</string>
+
+    <string name="salary_worklogs_title">Chấm công %1$s – tháng %2$d/%3$d</string>
+    <string name="salary_worklogs_empty">Không có bản ghi chấm công trong tháng này.</string>
+    <string name="salary_worklog_completed">%1$s: %2$s – %3$s (%4$s)</string>
+    <string name="salary_worklog_open">%1$s: %2$s – chưa check-out</string>
+    <string name="salary_worklogs_summary">Tổng %1$s · Tăng ca %2$s · %3$d ca mở</string>
+
+    <string name="salary_error_generic">Không thực hiện được thao tác. Vui lòng thử lại.</string>
+    <string name="salary_error_permission">Bạn không có quyền thực hiện thao tác này</string>
+    <string name="salary_session_invalid">Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại.</string>
+</resources>

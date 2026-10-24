@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="attendance_title">Chấm công</string>
+    <string name="attendance_employee_info">%1$s – %2$s</string>
+
+    <string name="attendance_today_header">Hôm nay</string>
+    <string name="attendance_today_date">Ngày %1$s</string>
+    <string name="attendance_status_none">Chưa check-in</string>
+    <string name="attendance_status_checked_in">Đang làm việc (chưa check-out)</string>
+    <string name="attendance_status_completed">Đã hoàn tất ca</string>
+    <string name="attendance_status_missing_checkout">Thiếu giờ ra</string>
+    <string name="attendance_status_unknown">Trạng thái không hợp lệ: %1$s</string>
+    <string name="attendance_check_in_time">Giờ vào: %1$s</string>
+    <string name="attendance_check_out_time">Giờ ra: %1$s</string>
+    <string name="attendance_total_hours">Số giờ: %1$s</string>
+    <string name="attendance_time_empty">--:--:--</string>
+    <string name="attendance_hours_empty">--</string>
+    <string name="attendance_hours_value">%1$.2f giờ</string>
+
+    <string name="attendance_btn_check_in">Check-in</string>
+    <string name="attendance_btn_check_out">Check-out</string>
+    <string name="attendance_check_in_success">Check-in thành công lúc %1$s</string>
+    <string name="attendance_check_out_success">Check-out thành công. Ca làm %1$s</string>
+    <string name="attendance_already_checked_in">Hôm nay bạn đã check-in</string>
+    <string name="attendance_not_checked_in">Bạn chưa check-in hôm nay</string>
+    <string name="attendance_already_checked_out">Ca hôm nay đã check-out</string>
+    <string name="attendance_save_failed">Không lưu được chấm công. Vui lòng thử lại.</string>
+
+    <string name="attendance_history_header">Lịch sử chấm công</string>
+    <string name="attendance_month_label">Tháng %1$d/%2$d</string>
+    <string name="attendance_prev_month">‹ Trước</string>
+    <string name="attendance_next_month">Sau ›</string>
+    <string name="attendance_history_empty">Không có bản ghi chấm công trong tháng này</string>
+    <string name="attendance_item_times">%1$s · %2$s</string>
+
+    <string name="attendance_summary_header">Tổng hợp tháng</string>
+    <string name="attendance_summary_shifts">Số ca hoàn tất: %1$d</string>
+    <string name="attendance_summary_total">Tổng giờ làm: %1$s</string>
+    <string name="attendance_summary_regular">Giờ thường: %1$s</string>
+    <string name="attendance_summary_overtime">Giờ tăng ca: %1$s</string>
+    <string name="attendance_summary_open_warning">Còn %1$d ca chưa check-out trong tháng; ca này chưa được tính vào tổng giờ.</string>
+
+    <string name="attendance_error_generic">Không thực hiện được thao tác. Vui lòng thử lại.</string>
+    <string name="attendance_error_permission">Bạn không có quyền thực hiện thao tác này</string>
+    <string name="attendance_session_invalid">Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại.</string>
+</resources>
