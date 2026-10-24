@@ -1,3 +1,64 @@
 <resources>
     <string name="app_name">MBLab2</string>
+
+    <!-- Đăng nhập, phiên và menu (Sơn) -->
+    <string name="login_title">Quản lý giờ làm và lương</string>
+    <string name="login_subtitle">Đăng nhập bằng tài khoản Admin hoặc Employee</string>
+    <string name="login_hint_username">Tên đăng nhập</string>
+    <string name="login_hint_password">Mật khẩu</string>
+    <string name="login_remember">Ghi nhớ đăng nhập</string>
+    <string name="login_submit">Đăng nhập</string>
+    <string name="login_error_username_required">Vui lòng nhập tên đăng nhập</string>
+    <string name="login_error_password_required">Vui lòng nhập mật khẩu</string>
+    <string name="login_error_invalid">Sai tên đăng nhập hoặc mật khẩu</string>
+    <string name="login_error_no_profile">Tài khoản chưa có hồ sơ nhân viên hoặc vai trò không hợp lệ</string>
+    <string name="login_error_system">Không thể đăng nhập lúc này, vui lòng thử lại</string>
+    <string name="login_role_admin">Quản trị viên</string>
+    <string name="login_role_employee">Nhân viên</string>
+    <string name="login_menu_title">Menu chính</string>
+    <string name="login_menu_greeting">Xin chào %1$s (%2$s)</string>
+    <string name="login_menu_employees">Quản lý nhân viên</string>
+    <string name="login_menu_admin_salary">Quản lý lương</string>
+    <string name="login_menu_attendance">Chấm công và lịch sử</string>
+    <string name="login_menu_my_salary">Lương của tôi</string>
+    <string name="login_menu_logout">Đăng xuất</string>
+
+    <!-- Quản lý nhân viên (Sơn) -->
+    <string name="employee_title">Quản lý nhân viên</string>
+    <string name="employee_hint_search">Tìm theo mã, tên, email, điện thoại</string>
+    <string name="employee_add">Thêm nhân viên</string>
+    <string name="employee_empty">Chưa có nhân viên nào</string>
+    <string name="employee_empty_search">Không tìm thấy nhân viên phù hợp</string>
+    <string name="employee_item_name">%1$s - %2$s</string>
+    <string name="employee_item_contact">%1$s · %2$s</string>
+    <string name="employee_item_rate">Đơn giá: %1$s đ/giờ</string>
+    <string name="employee_form_title_add">Thêm nhân viên</string>
+    <string name="employee_form_title_edit">Sửa nhân viên</string>
+    <string name="employee_form_account_section">Tài khoản đăng nhập (EMPLOYEE)</string>
+    <string name="employee_hint_code">Mã nhân viên</string>
+    <string name="employee_hint_fullname">Họ và tên</string>
+    <string name="employee_hint_email">Email</string>
+    <string name="employee_hint_phone">Số điện thoại</string>
+    <string name="employee_hint_rate">Đơn giá theo giờ (VND)</string>
+    <string name="employee_hint_username">Tên đăng nhập</string>
+    <string name="employee_hint_password">Mật khẩu</string>
+    <string name="employee_save">Lưu</string>
+    <string name="employee_cancel">Hủy</string>
+    <string name="employee_delete">Xóa</string>
+    <string name="employee_delete_title">Xóa nhân viên</string>
+    <string name="employee_delete_message">Xóa nhân viên %1$s (%2$s) và tài khoản đăng nhập liên kết?</string>
+    <string name="employee_added">Đã thêm nhân viên</string>
+    <string name="employee_updated">Đã cập nhật nhân viên</string>
+    <string name="employee_deleted">Đã xóa nhân viên</string>
+    <string name="employee_error_code">Mã gồm 2–20 ký tự chữ, số, - hoặc _</string>
+    <string name="employee_error_fullname">Vui lòng nhập họ tên (tối đa 100 ký tự)</string>
+    <string name="employee_error_email">Email không hợp lệ</string>
+    <string name="employee_error_phone">Số điện thoại không hợp lệ (bắt đầu bằng 0 hoặc +84)</string>
+    <string name="employee_error_rate">Đơn giá phải là số lớn hơn 0</string>
+    <string name="employee_error_username">Tên đăng nhập gồm 3–30 ký tự chữ, số, . hoặc _</string>
+    <string name="employee_error_password">Mật khẩu tối thiểu %1$d ký tự, không có khoảng trắng đầu/cuối</string>
+    <string name="employee_error_save">Không lưu được dữ liệu nhân viên</string>
+    <string name="employee_error_delete">Không xóa được nhân viên</string>
+    <string name="employee_error_has_history">Không thể xóa nhân viên đã có dữ liệu chấm công hoặc lương</string>
+    <string name="employee_error_permission">Phiên không hợp lệ hoặc không có quyền truy cập</string>
 </resources>
