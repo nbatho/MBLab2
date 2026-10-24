@@ -13,7 +13,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mblab2.activities.EmployeeActivity;
+import com.example.mblab2.activities.AttendanceActivity;
 import com.example.mblab2.activities.LoginActivity;
+import com.example.mblab2.activities.SalaryActivity;
 import com.example.mblab2.dal.DBHelper;
 import com.example.mblab2.models.Account;
 
@@ -50,10 +52,12 @@ public class MainActivity extends AppCompatActivity {
         btnEmployees.setOnClickListener(v -> openEmployeeManagement());
         btnLogout.setOnClickListener(v -> LoginActivity.logout(this));
 
-        // Màn hình chấm công/lương thuộc phần Hùng; tạm vô hiệu hóa cho tới khi tích hợp.
-        findViewById(R.id.main_btn_admin_salary).setEnabled(false);
-        findViewById(R.id.main_btn_attendance).setEnabled(false);
-        findViewById(R.id.main_btn_my_salary).setEnabled(false);
+        findViewById(R.id.main_btn_admin_salary).setOnClickListener(
+                v -> openScreen(SalaryActivity.class, Account.ROLE_ADMIN));
+        findViewById(R.id.main_btn_attendance).setOnClickListener(
+                v -> openScreen(AttendanceActivity.class, Account.ROLE_EMPLOYEE));
+        findViewById(R.id.main_btn_my_salary).setOnClickListener(
+                v -> openScreen(SalaryActivity.class, Account.ROLE_EMPLOYEE));
     }
 
     @Override
@@ -87,15 +91,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openEmployeeManagement() {
+        openScreen(EmployeeActivity.class, Account.ROLE_ADMIN);
+    }
+
+    private void openScreen(Class<? extends AppCompatActivity> screen, String requiredRole) {
         Account account = LoginActivity.getValidSession(this, db);
         if (account == null) {
             LoginActivity.logout(this);
             return;
         }
-        if (!Account.ROLE_ADMIN.equals(account.getRole())) {
+        if (!requiredRole.equals(account.getRole())) {
             bindMenu(account);
             return;
         }
-        startActivity(new Intent(this, EmployeeActivity.class));
+        startActivity(new Intent(this, screen));
     }
 }
